@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
       title: 'Pensja Maszynisty',
       theme: ThemeData(
 
-        primarySwatch: Colors.lightBlue,
+        primarySwatch: Colors.blue,
       ),
       home: MyHomePage(title: 'Pensja Maszynisty'),
     );
@@ -80,7 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   padding: const EdgeInsets.all(10.0),
                   child: const Text(
-                      'Oblicz pensję',
+                      'Oblicz swoją pensję',
                       style: TextStyle(fontSize: 20)
                   ),
                 ),
@@ -98,7 +98,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 ],
 
               ),
+              ButtonBar(
+                children: <Widget>[FlatButton(
+                  child: Text('O programie'),
+                  color: Colors.blue,
+                  onPressed: () {/** */},
+                ),],
 
+              )
 
 
 

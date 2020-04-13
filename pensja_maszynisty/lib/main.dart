@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:carousel_slider/carousel_slider.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -7,10 +7,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Pensja maszynisty',
+      title: 'Pensja Maszynisty',
       theme: ThemeData(
 
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.lightBlue,
       ),
       home: MyHomePage(title: 'Pensja Maszynisty'),
     );
@@ -29,18 +29,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,19 +50,75 @@ class _MyHomePageState extends State<MyHomePage> {
         // in the middle of the parent.
         child: Column(
             children: <Widget>[
-            Text('Deliver features faster'),
-              Text('Craft beautiful UIs'),
+            CarouselSlider(
+              height: 100,
+              autoPlay:true,
+              initialPage: 0,
+              autoPlayCurve: Curves.easeInQuad,
+              autoPlayInterval: Duration(seconds: 1),
+              autoPlayAnimationDuration: Duration(milliseconds: 800),
+              items: <Widget>[
+                Image.asset('assets/images/pendolino.jpg', width: 200.0, height: 200.0),
+              ],
+
+            ),
+
+              const SizedBox(height: 30),
+              RaisedButton(
+                onPressed: () {},
+                textColor: Colors.white,
+                padding: const EdgeInsets.all(0.0),
+                child: Container(
+                  decoration: const BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: <Color>[
+                        Color(0xFF0D47A1),
+                        Color(0xFF1976D2),
+                        Color(0xFF42A5F5),
+                      ],
+                    ),
+                  ),
+                  padding: const EdgeInsets.all(10.0),
+                  child: const Text(
+                      'Oblicz pensję',
+                      style: TextStyle(fontSize: 20)
+                  ),
+                ),
+              ),
+
+              CarouselSlider(
+                height: 100,
+                autoPlay:true,
+                initialPage: 0,
+                autoPlayCurve: Curves.easeInQuad,
+                autoPlayInterval: Duration(seconds: 1),
+                autoPlayAnimationDuration: Duration(milliseconds: 1000),
+                items: <Widget>[
+                  Image.asset('assets/images/ep071.png', width: 200.0, height: 200.0),
+                ],
+
+              ),
+
+
+
+
+
+
+            // ),
+
+          //  ),
+
           ]
+
+
+
 
 
         ),
 
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+
     );
+
   }
 }

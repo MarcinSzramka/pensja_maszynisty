@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -8,6 +9,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Pensja Maszynisty',
+
       theme: ThemeData(
 
         primarySwatch: Colors.blue,
@@ -27,46 +29,96 @@ class MyHomePage extends StatefulWidget {
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
+// <==============2.STRONA==================>
+class SecondRoute extends StatelessWidget {
+  final formKey = GlobalKey<FormState>();
+  var var1;
+  var var2;
+  @override
 
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Wprowadź dane:"),
+      ),
+      body: ListView(
+        children:<Widget>[
+
+           Form(
+            key: formKey,
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text("Parametr 1:"),
+                    TextFormField(
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return 'Please enter some text';
+                        }
+                        return null;
+                      },
+                    ),
+                    Text("Parametr 2:"),
+                    TextFormField(
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return 'Please enter some text';
+                        }
+                        return null;
+                      },
+                    ),
+
+
+            ]
+          )
+          )
+        ]
+       ),
+
+    );
+  }
+}
+//<=================1.STRONA===============>
 class _MyHomePageState extends State<MyHomePage> {
 
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
+
     return Scaffold(
       appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
+
+
         title: Text(widget.title),
       ),
       body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
+
         child: Column(
             children: <Widget>[
             CarouselSlider(
-              height: 100,
+              height: MediaQuery.of(context).size.height*0.24,
               autoPlay:true,
               initialPage: 0,
               autoPlayCurve: Curves.easeInQuad,
               autoPlayInterval: Duration(seconds: 1),
               autoPlayAnimationDuration: Duration(milliseconds: 800),
               items: <Widget>[
-                Image.asset('assets/images/pendolino.jpg', width: 200.0, height: 200.0),
+                Image.asset('assets/images/pendolino.jpg', height: MediaQuery.of(context).size.height*0.5),
               ],
 
             ),
 
-              const SizedBox(height: 30),
-              RaisedButton(
-                onPressed: () {},
-                textColor: Colors.white,
+            SizedBox(
+              height: MediaQuery.of(context).size.height*0.13,
+              child:RaisedButton(
+                onPressed:() {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SecondRoute()),
+                  );
+                },
+                textColor: Colors.deepOrange,
+                //height:
                 padding: const EdgeInsets.all(0.0),
                 child: Container(
                   decoration: const BoxDecoration(
@@ -74,35 +126,45 @@ class _MyHomePageState extends State<MyHomePage> {
                       colors: <Color>[
                         Color(0xFF0D47A1),
                         Color(0xFF1976D2),
-                        Color(0xFF42A5F5),
+                        Color(0xFF29B6F6),
                       ],
                     ),
                   ),
+
                   padding: const EdgeInsets.all(10.0),
                   child: const Text(
                       'Oblicz swoją pensję',
-                      style: TextStyle(fontSize: 20)
+                      style: TextStyle(fontSize: 15)
                   ),
                 ),
               ),
+            ),
 
               CarouselSlider(
-                height: 100,
+                height: MediaQuery.of(context).size.height*0.24,
                 autoPlay:true,
                 initialPage: 0,
                 autoPlayCurve: Curves.easeInQuad,
                 autoPlayInterval: Duration(seconds: 1),
                 autoPlayAnimationDuration: Duration(milliseconds: 1000),
                 items: <Widget>[
-                  Image.asset('assets/images/ep071.png', width: 200.0, height: 200.0),
+                  Image.asset('assets/images/ep071.png', height: MediaQuery.of(context).size.height*0.5),
                 ],
 
               ),
               ButtonBar(
+                buttonHeight: MediaQuery.of(context).size.height*0.1,
                 children: <Widget>[FlatButton(
+
                   child: Text('O programie'),
-                  color: Colors.blue,
-                  onPressed: () {/** */},
+                  color: Color(0xFF0D47A1),
+                  textColor: Colors.white70,
+                  onPressed:() {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => CreditsRoute()),
+                    );
+                  },
                 ),],
 
               )
@@ -127,5 +189,24 @@ class _MyHomePageState extends State<MyHomePage> {
 
     );
 
+  }
+}
+class CreditsRoute extends StatelessWidget {
+
+  @override
+
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("O programie:"),
+      ),
+      body: Text(
+        'Witaj użytkowniku !',
+        textAlign: TextAlign.center,
+        overflow: TextOverflow.ellipsis,
+        style: TextStyle(fontWeight: FontWeight.bold),
+      )
+
+    );
   }
 }

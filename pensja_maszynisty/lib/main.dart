@@ -49,20 +49,130 @@ class SecondRoute extends StatelessWidget {
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text("Parametr 1:"),
+                    Text("Norma godzin:"),
                     TextFormField(
+
                       validator: (value) {
                         if (value.isEmpty) {
-                          return 'Please enter some text';
+                          return 'Wpisz normę godzin !';
                         }
                         return null;
                       },
                     ),
-                    Text("Parametr 2:"),
+                    Text("Podstawa wynagrodzenia brutto:"),
                     TextFormField(
                       validator: (value) {
                         if (value.isEmpty) {
-                          return 'Please enter some text';
+                          return 'Wpisz podstewę wynagrodzenia !';
+                        }
+                        return null;
+                      },
+                    ),
+                    Text("Premia regulaminowa:"),
+                    TextFormField(
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return 'Wpisz kwotę premii regulaminowej:';
+                        }
+                        return null;
+                      },
+                    ),
+                    Text("Godziny urlopowe:"),
+                    TextFormField(
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return 'Wpisz liczbę godzin urlopowych !';
+                        }
+                        return null;
+                      },
+                    ),
+                    Text("Liczba godzin 'nocnych' (21-7)"),
+                    TextFormField(
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return 'Wpisz liczbę godzin nocnych !';
+                        }
+                        return null;
+                      },
+                    ),
+                    Text("Liczba godzin przepracowanych w niedzielę:"),
+                    TextFormField(
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return 'Wpisz liczbę godzin nprzepracowanych w niedzielę !';
+                        }
+                        return null;
+                      },
+                    ),
+                    Text("Liczba nadgodzin w dniach roboczych:"),
+                    TextFormField(
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return 'Wpisz liczbę nadgodzin w dniach roboczych !';
+                        }
+                        return null;
+                      },
+                    ),
+                    Text("Liczba nadgodzin w święta:"),
+                    TextFormField(
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return 'Wpisz liczbę nadgodzin w święta!';
+                        }
+                        return null;
+                      },
+                    ),
+
+                    Text("Liczba godzin w których prowadziłeś pojazd w pojedynke:"),
+                    TextFormField(
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return 'Wpisz liczbę godzin w których prowadziłeś pojazd w pojedynke!';
+                        }
+                        return null;
+                      },
+                    ),
+                    Text("Ilość przejechanych szybkich kilometrów :"),
+                    TextFormField(
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return 'Wpisz ilość przejechanych szybkich kilometrów!';
+                        }
+                        return null;
+                      },
+                    ),
+                    Text("Ilość przejechanych szybkich kilometrów :"),
+                    TextFormField(
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return 'Wpisz ilość przejechanych szybkich kilometrów!';
+                        }
+                        return null;
+                      },
+                    ),
+                    Text("Liczba godzin przepracowanych w warunkach ucążliwych:"),
+                    TextFormField(
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return 'Wpisz liczbę godzin przepracowanych w warunkach ucążliwych!';
+                        }
+                        return null;
+                      },
+                    ),
+                    Text("ilość służb manewrowych w których manewry wynosiły więcej niż 80% służby:"),
+                    TextFormField(
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return 'Wpisz liczbę godzin przepracowanych w warunkach ucążliwych!';
+                        }
+                        return null;
+                      },
+                    ),
+                    Text("Dodatek stażowy:"),
+                    TextFormField(
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return 'Wpisz dodatek stażowy!';
                         }
                         return null;
                       },
@@ -71,14 +181,35 @@ class SecondRoute extends StatelessWidget {
 
             ]
           )
+          ),
+          ButtonBar(
+            buttonHeight: MediaQuery.of(context).size.height*0.1,
+            children: <Widget>[FlatButton(
+
+              child: Text('Pokaż wynik'),
+              color: Color(0xFF0D47A1),
+              textColor: Colors.white70,
+              onPressed:() {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ResultRoute()),
+                );
+              },
+            ),],
+
           )
+
+
+
         ]
        ),
 
     );
   }
 }
+
 //<=================1.STRONA===============>
+
 class _MyHomePageState extends State<MyHomePage> {
 
 
@@ -191,6 +322,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   }
 }
+//<================credits route==================>
 class CreditsRoute extends StatelessWidget {
 
   @override
@@ -206,6 +338,27 @@ class CreditsRoute extends StatelessWidget {
         overflow: TextOverflow.ellipsis,
         style: TextStyle(fontWeight: FontWeight.bold),
       )
+
+    );
+  }
+}
+
+//<================formularz wynikowy==================>
+class ResultRoute extends StatelessWidget {
+
+  @override
+
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text("O programie:"),
+        ),
+        body: Text(
+          'Formularz wynikowy!',
+          textAlign: TextAlign.center,
+          overflow: TextOverflow.ellipsis,
+          style: TextStyle(fontWeight: FontWeight.bold),
+        )
 
     );
   }

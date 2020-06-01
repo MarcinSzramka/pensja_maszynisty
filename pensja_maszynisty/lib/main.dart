@@ -32,8 +32,9 @@ class MyHomePage extends StatefulWidget {
 // <==============2.STRONA==================>
 class SecondRoute extends StatelessWidget {
   final formKey = GlobalKey<FormState>();
-  var var1;
-  var var2;
+
+  //var var1;
+ // var var2;
   @override
 
   Widget build(BuildContext context) {
@@ -141,15 +142,7 @@ class SecondRoute extends StatelessWidget {
                         return null;
                       },
                     ),
-                    Text("Ilość przejechanych szybkich kilometrów :"),
-                    TextFormField(
-                      validator: (value) {
-                        if (value.isEmpty) {
-                          return 'Wpisz ilość przejechanych szybkich kilometrów!';
-                        }
-                        return null;
-                      },
-                    ),
+
                     Text("Liczba godzin przepracowanych w warunkach ucążliwych:"),
                     TextFormField(
                       validator: (value) {
@@ -195,12 +188,9 @@ class SecondRoute extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => ResultRoute()),
                 );
               },
-            ),],
-
+            ),
+            ],
           )
-
-
-
         ]
        ),
 
@@ -342,16 +332,25 @@ class CreditsRoute extends StatelessWidget {
     );
   }
 }
-
+//<===============================Komunikacja danych:V
+//https://medium.com/flutter-community/simple-ways-to-pass-to-and-share-data-with-widgets-pages-f8988534bd5b
 //<================formularz wynikowy==================>
 class ResultRoute extends StatelessWidget {
-
+  double paymentCounter (double norma, double podst, double premia, double godzUrl,
+      double godzNoc, double godzNedz, double nadGodzRob, double nadGodzSw,
+      double godzPoj, double szybKilo, double godzUciaz, double godzMan80,
+      double dodStaz)
+  {
+//===================================================TODO
+    double wyplata = podst + premia + dodStaz;
+return wyplata;
+  }
   @override
 
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("O programie:"),
+          title: Text("Twoja wypłata wyniesie:"),
         ),
         body: Text(
           'Formularz wynikowy!',
